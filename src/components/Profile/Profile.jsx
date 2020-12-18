@@ -19,19 +19,25 @@ const Profile = ({ profile }) => {
 				stars: repository?.stargazers_count,
 				openIssues: repository?.open_issues
 			}
-		));
+		)
+	);
 
 	const constructedProfile = {
 		avatarUrl: profileData?.avatar_url,
 		login: profileData?.login,
 		name: profileData?.name,
+		bio: profileData?.bio,
+		website: profileData?.blog,
 		followers: profileData?.followers,
 		following: profileData?.following,
-		repositories: constructedProfileRepositories.length
+		repositories: constructedProfileRepositories.length,
+		url: profileData?.html_url
 	};
 
+	console.log(profileData)
+
 	return (
-		<article className="bg-gray-100">
+		<article className="bg-gray-100 flex flex-col xl:flex-row justify-center gap-3">
 			<ProfileCard profile={ constructedProfile } />
 			<ProfileRepositories repositories={ constructedProfileRepositories } />
 		</article>

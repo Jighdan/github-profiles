@@ -1,38 +1,43 @@
+import { ReactComponent as OpenIcon } from "../../assets/icons/open.svg";
+
 const ProfileCard = ({ profile }) => {
 	const profileImageAltText = `${profile.login}'s profile.`;
 
-	return (
-		<article className="container max-w-md p-7">
-			<section>
-				<section className="">
-					<img className="block h-56 rounded-full" src={ profile.avatarUrl } alt={ profileImageAltText } />
-					<section className="">				
-						<h1 className="text-4xl font-bold">{ profile.login }</h1>
-						<h2 className="text-lg font-semibold text-grey uppercase">{ profile.name }</h2>
-					</section>
-				</section>
+	console.log(profile)
 
-				<section className="flex-row">
-					<section>
+	return (
+		<article className="p-7 flex flex-col flex-grow gap-4 justify-evenly xl:justify-start md:flex-row xl:flex-col items-center xl:items-center">
+			<img className="block h-56 md:h-64 lg:h-72 rounded-full" src={ profile.avatarUrl } alt={ profileImageAltText } />
+
+			<section className="flex flex-col justify-evenly items-center md:items-start">				
+				<header className="">
+					<h1 className="text-4xl lg:text-5xl font-bold">{ profile.login }</h1>
+					<h2 className="text-lg lg:text-xl font-semibold text-grey uppercase">{ profile.name }</h2>
+				</header>
+
+				<p className="my-2 lg:my-4 font-light italic">"{ profile.bio }"</p>
+
+				<aside className="flex flex-row justify-between">
+					<section className="pr-2 flex flex-col items-center font-light tracking-tight">
 						<h3>Followers</h3>
 						<p>{ profile.followers }</p>
 					</section>
 
-					<section>
+					<section className="pr-2 flex flex-col items-center font-light tracking-tight">
 						<h3>Following</h3>
 						<p>{ profile.following }</p>
 					</section>
 
-					<section>
+					<section className="pr-2 flex flex-col items-center font-light tracking-tight">
 						<h3>Repositories</h3>
 						<p>{ profile.repositories }</p>
 					</section>
-				</section>
-			</section>
+				</aside>
 
-			<section>
-
-			</section>
+				<a href={ profile.url } target="_blank" rel="noopener noreferrer">
+					<OpenIcon />
+				</a>
+			</section>			
 		</article>
 	);
 };
