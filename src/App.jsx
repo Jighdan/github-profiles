@@ -1,24 +1,27 @@
 import { useState, useEffect } from "react";
+import fetchProfile from "./services/githubProfile";
+import Profile from "./components/Profile/Profile";
 
 const App = () => {
-  const baseApi = "https://api.github.com/users/";
-
+  // Remove default state on production
   const [query, setQuery] = useState("jighdan");
-  const [profileData, setProfileData] = useState({});
-
-  const fetchProfileData = async (profileName) => {
-    const response = await fetch(`${baseApi}${profileName}`);
-    const data = await response.json();
-    console.info(data)
-    return data
-  };
+  const [isProfileLoading, setIsProfileLoading] = useState(true);
+  const [profile, setProfile] = useState({});
 
   useEffect(() => {
-    fetchProfileData(query);
+    fetchProfile(query)
+      .then(data => {
+        setProfile(data);
+        setIsProfileLoading(false);
+      });
   }, [query]);
 
   return (
-    <h1>App Mount</h1>
+    <main className="min-h-screen box-border bg-gray-200">
+      {
+        isProfileLoading ? <h1>Profile Loading</h1> : <Profile profile={ profile } />
+      }
+    </main>
   );
 };
 
