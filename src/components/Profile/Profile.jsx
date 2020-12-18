@@ -34,10 +34,8 @@ const Profile = ({ profile }) => {
 		url: profileData?.html_url
 	};
 
-	console.log(profileData)
-
 	return (
-		<article className="bg-gray-100 flex flex-col xl:flex-row justify-center gap-3">
+		<article className="bg-gray-100 flex flex-col xl:flex-row justify-center gap-4">
 			<ProfileCard profile={ constructedProfile } />
 			<ProfileRepositories repositories={ constructedProfileRepositories } />
 		</article>

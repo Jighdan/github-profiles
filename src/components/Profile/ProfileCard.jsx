@@ -3,11 +3,9 @@ import { ReactComponent as OpenIcon } from "../../assets/icons/open.svg";
 const ProfileCard = ({ profile }) => {
 	const profileImageAltText = `${profile.login}'s profile.`;
 
-	console.log(profile)
-
 	return (
-		<article className="p-7 flex flex-col flex-grow gap-4 justify-evenly xl:justify-start md:flex-row xl:flex-col items-center xl:items-center">
-			<img className="block h-56 md:h-64 lg:h-72 rounded-full" src={ profile.avatarUrl } alt={ profileImageAltText } />
+		<article className="p-7 min-w-max flex flex-col flex-grow gap-4 justify-evenly md:gap-4 lg:gap-1 xl:justify-start md:flex-row xl:flex-col items-center xl:items-center">
+			<img className="block w-auto h-56 md:h-64 lg:h-72 rounded-full" src={ profile.avatarUrl } alt={ profileImageAltText } />
 
 			<section className="flex flex-col justify-evenly items-center md:items-start">				
 				<header className="">
@@ -34,7 +32,7 @@ const ProfileCard = ({ profile }) => {
 					</section>
 				</aside>
 
-				<a href={ profile.url } target="_blank" rel="noopener noreferrer">
+				<a className="justify-self-center" href={ profile.url } target="_blank" rel="noopener noreferrer">
 					<OpenIcon />
 				</a>
 			</section>			

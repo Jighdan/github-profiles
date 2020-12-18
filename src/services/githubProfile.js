@@ -14,7 +14,7 @@ const fetchProfile = async (profileName) => {
 		return { profileData, profileRepositoriesData };
 	} catch (error) {
 		console.error(error);
-		throw error;
+		return null;
 	}
 };
 
