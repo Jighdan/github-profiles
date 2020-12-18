@@ -22,7 +22,7 @@ const ProfileRepository = ({ repository }) => {
 		<article
 			onMouseEnter={ () => setOnHover(true) }
 			onMouseLeave={ () => setOnHover(false) }
-			className="max-w-full md:max-w-md lg:max-w-lg p-4 bg-white flex flex-row gap-5 rounded"
+			className="max-w-full md:max-w-md lg:max-w-lg p-4 bg-white flex flex-row gap-5 rounded-lg"
 		>
 			<main className="flex flex-col flex-grow justify-between">
 				<header>

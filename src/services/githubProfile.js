@@ -1,6 +1,6 @@
 const baseApi = "https://api.github.com/users/";
 
-const fetchProfile = async (profileName) => {
+const fetchProfileData = async (profileName) => {
 	const profileApiUrl = `${baseApi}${profileName}`;
 	const profileRepositoriesApiUrl = `${profileApiUrl}/repos`;
 
@@ -10,7 +10,7 @@ const fetchProfile = async (profileName) => {
 
 		const profileData = await profileResponse.json();
 		const profileRepositoriesData = await profileRepositoriesResponse.json();
-		
+
 		return { profileData, profileRepositoriesData };
 	} catch (error) {
 		console.error(error);
@@ -18,4 +18,4 @@ const fetchProfile = async (profileName) => {
 	}
 };
 
-export default fetchProfile;
+export default fetchProfileData;
