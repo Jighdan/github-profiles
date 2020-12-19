@@ -1,12 +1,11 @@
 import { useState } from "react";
 
 const SearchBar = ({ setQuery, fetchProfile }) => {
-	const [newQuery, setnewQuery] = useState("jighdan");
-	const [isNewQueryEmpty, setIsNewQueryEmpty] = useState(false);
+	const [newQuery, setNewQuery] = useState("jighdan");
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		if (!isNewQueryEmpty) {
+		if (newQuery !== "") {
 			setQuery(newQuery);
 			fetchProfile();
 		}
@@ -20,7 +19,7 @@ const SearchBar = ({ setQuery, fetchProfile }) => {
 				</label>
 				<input
 					value={newQuery}
-					onChange={ (event) => setnewQuery(event.target.value) }
+					onChange={ (event) => setNewQuery(event.target.value) }
 					className="flex-grow py-2 px-3 rounded-l-lg"
 					name="searchBar"
 					type="text"
