@@ -2,6 +2,12 @@ import ProfileCard from "./ProfileCard";
 import ProfileRepositories from "./ProfileRepositories";
 
 const Profile = ({ profile }) => {
+	if (!profile) {
+		return (
+			<h1>Start by searching your GitHub profile, or "Jighdan" for example ;-)</h1>
+		)
+	};
+
 	const { profileData, profileRepositoriesData } = profile;
 
 	const constructedProfileRepositories = profileRepositoriesData

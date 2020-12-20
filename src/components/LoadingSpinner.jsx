@@ -1,6 +1,6 @@
 const LoadingSpinner = () => {
 	return (
-		<section className="m-auto">
+		<section className="mx-auto">
 			<h1>Profile Loading</h1>
 		</section>
 	)
