@@ -1,13 +1,12 @@
 import { useState } from "react";
 
-const SearchBar = ({ setQuery, fetchProfile }) => {
-	const [newQuery, setNewQuery] = useState("jighdan");
+const SearchBar = ({ setQuery }) => {
+	const [newQuery, setNewQuery] = useState("");
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		if (newQuery !== "") {
 			setQuery(newQuery);
-			fetchProfile();
 		}
 	};
 
@@ -24,7 +23,8 @@ const SearchBar = ({ setQuery, fetchProfile }) => {
 					name="searchBar"
 					type="text"
 					spellCheck="false"
-					placeholder="Lookup a GitHub profile."
+					placeholder="Search User ..."
+					required
 				/>
 
 				<input type="submit" className="py-2 px-4 rounded-r-lg" value="Search" />

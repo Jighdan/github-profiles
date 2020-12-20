@@ -11,9 +11,13 @@ const fetchProfileData = async (profileName) => {
 		const profileData = await profileResponse.json();
 		const profileRepositoriesData = await profileRepositoriesResponse.json();
 
+		// Handling not found profiles
+		if (profileData.message) {
+			return false;
+		}
+
 		return { profileData, profileRepositoriesData };
 	} catch (error) {
-		console.error(error);
 		return null;
 	}
 };

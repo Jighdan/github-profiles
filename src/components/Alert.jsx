@@ -7,7 +7,7 @@ const alertTexts = {
 
 const Alert = ({ alertType }) => {
 	return (
-		<section className="bg-red-100 p-5 w-full sm:w-1/2 border-l-4 border-red-700" role="alert">
+		<section className="max-w-full bg-red-100 p-5 border-l-4 border-red-700" role="alert">
 			<section className="flex space-x-3">
 				<IconWarning className="flex-none fill-current text-red-700" />
 				<section className="leading-tight flex flex-col space-y-2">
