@@ -2,6 +2,7 @@ import { ReactComponent as OpenIcon } from "../../assets/icons/open.svg";
 
 const ProfileCard = ({ profile }) => {
 	const profileImageAltText = `${profile.login}'s profile.`;
+	const profileBio = profile.bio ? `"${profile.bio}"` : "";
 
 	return (
 		<article className="p-7 min-w-max flex flex-col flex-grow gap-4 justify-evenly md:gap-4 lg:gap-1 xl:justify-start md:flex-row xl:flex-col items-center xl:items-center">
@@ -13,7 +14,7 @@ const ProfileCard = ({ profile }) => {
 					<h2 className="text-lg lg:text-xl font-semibold text-grey uppercase">{ profile.name }</h2>
 				</header>
 
-				<p className="my-2 lg:my-4 font-light">"{ profile.bio }"</p>
+				<p className="my-2 lg:my-4 font-light">"{ profileBio }"</p>
 
 				<aside className="flex flex-row justify-between">
 					<section className="pr-2 flex flex-col items-center font-light tracking-tight">
