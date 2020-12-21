@@ -26,12 +26,12 @@ const ProfileRepository = ({ repository }) => {
 		>
 			<main className="flex flex-col flex-grow justify-between">
 				<header>
-					<h1 className="text-lg font-medium">{ repository.name }</h1>
+					<h1 className="text-lg font-medium break-normal md:break-all">{ repository.name }</h1>
 					<h3 className="text-sm text-gray-800 font-light">{ repository.language }</h3>
 					<h3 className="font-light italic">{ formatDate(repository.createdAt) }</h3>
 				</header>
 
-				<p className="text-sm">{ repository.description }</p>
+				<p className="text-sm break-normal md:break-all">{ repository.description }</p>
 
 				<a
 					className={ onHover ? "visible" : "invisible" }
