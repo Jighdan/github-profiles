@@ -1,4 +1,4 @@
-import { ReactComponent as OpenIcon } from "../../assets/icons/open.svg";
+import ProfileCardLinks from "./ProfileCardLinks";
 
 const ProfileCard = ({ profile }) => {
 	const profileImageAltText = `${profile.login}'s profile.`;
@@ -33,9 +33,14 @@ const ProfileCard = ({ profile }) => {
 					</section>
 				</aside>
 
-				<a className="justify-self-center" href={ profile.url } target="_blank" rel="noopener noreferrer">
-					<OpenIcon />
-				</a>
+				<aside>
+					<ProfileCardLinks
+						email={ profile.email }
+						twitter={ profile.twitter }
+						githubUrl={ profile.githubUrl }
+						website={ profile.website }
+					/>
+				</aside>
 			</section>
 		</article>
 	);

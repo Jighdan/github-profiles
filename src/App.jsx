@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import fetchProfileData from "./services/githubProfile";
 
 import SearchBar from "./components/SearchBar";
-import Profile from "./components/Profile/Profile";
+import Profile from "./components/Profile/index";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Alert from "./components/Alert";
 

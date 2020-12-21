@@ -4,6 +4,11 @@ import { ReactComponent as IconIssue } from "../assets/icons/issue.svg";
 import { ReactComponent as IconStar } from "../assets/icons/star.svg";
 import { ReactComponent as IconOpen } from "../assets/icons/open.svg";
 import { ReactComponent as IconWarning } from "../assets/icons/warning.svg";
+import { ReactComponent as IconGithub } from "../assets/icons/github.svg";
+import { ReactComponent as IconEmail } from "../assets/icons/email.svg";
+import { ReactComponent as IconTwitter } from "../assets/icons/twitter.svg";
+
+// Can't handle 
 
 const availableIcons = {
 	website: IconWebsite,
@@ -11,12 +16,21 @@ const availableIcons = {
 	issue: IconIssue,
 	star: IconStar,
 	open: IconOpen,
-	warning: IconWarning
+	warning: IconWarning,
+	github: IconGithub,
+	email: IconEmail,
+	twitter: IconTwitter
 };
 
 const Icon = ({ name }) => {
 	const IconComponent = availableIcons[name];
-	return <IconComponent />
+	
+	// Handling non-available icons
+	if (IconComponent) {
+		return <IconComponent />
+	}
+	
+	return null;
 };
 
 export default Icon;

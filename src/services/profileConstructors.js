@@ -16,12 +16,15 @@ export const constructProfile = (profileData, numberOfProfileRepositories) => ({
 	avatarUrl: profileData?.avatar_url,
 	login: profileData?.login,
 	name: profileData?.name,
+	email: profileData?.email,
+	location: profileData?.location,
 	bio: profileData?.bio,
 	website: profileData?.blog,
 	followers: profileData?.followers,
 	following: profileData?.following,
 	repositories: numberOfProfileRepositories,
-	url: profileData?.html_url
+	githubUrl: profileData?.html_url,
+	twitter: profileData?.twitter_username
 });
 
 export const constructRepositories = (profileRepositoriesData) => (

@@ -1,4 +1,4 @@
-import ProfileCard from "./ProfileCard";
+import ProfileCard from "./ProfileCard/index";
 import ProfileRepositories from "./ProfileRepositories";
 
 const Profile = ({ profile, repositories }) => {
