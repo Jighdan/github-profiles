@@ -1,8 +1,5 @@
 import { useState } from "react";
-import { ReactComponent as ForkIcon } from "../../assets/icons/fork.svg";
-import { ReactComponent as IssueIcon } from "../../assets/icons/issue.svg";
-import { ReactComponent as StarIcon } from "../../assets/icons/star.svg";
-import { ReactComponent as OpenIcon } from "../../assets/icons/open.svg";
+import Icon from "../Icon";
 
 const ProfileRepository = ({ repository }) => {
 	const [onHover, setOnHover] = useState(false);
@@ -22,7 +19,7 @@ const ProfileRepository = ({ repository }) => {
 		<article
 			onMouseEnter={ () => setOnHover(true) }
 			onMouseLeave={ () => setOnHover(false) }
-			className="max-w-full md:max-w-md lg:max-w-lg p-4 bg-white flex flex-row gap-5 rounded-lg"
+			className="max-w-full md:max-w-md lg:max-w-lg p-4 bg-white flex flex-row gap-5 rounded-lg shadow"
 		>
 			<main className="flex flex-col flex-grow justify-between">
 				<header>
@@ -33,29 +30,41 @@ const ProfileRepository = ({ repository }) => {
 
 				<p className="text-sm break-normal md:break-all">{ repository.description }</p>
 
-				<a
-					className={ onHover ? "visible" : "invisible" }
-					href={ repository.url }
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<OpenIcon />
-				</a>
+				<section className={ `${onHover ? "visible" : "invisible"} flex flex-row space-x-2` }>
+					{
+						repository.url && (
+							<a
+								href={ repository.url }
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<Icon name="open" />
+							</a>
+						)
+					}
+					{
+						repository.website && (
+							<a href={ repository.website } target="_blank" rel="noopener noreferrer">
+								<Icon name="website" />
+							</a>
+						)
+					}
+				</section>
 			</main>
 
 			<aside className="flex flex-col justify-between">
 				<section className="flex flex-col items-center">
-					<StarIcon />
+					<Icon name="star" />
 					<p>{ repository.stars }</p>
 				</section>
 
 				<section className="flex flex-col items-center">
-					<ForkIcon />
+					<Icon name="fork" />
 					<p>{ repository.forks }</p>
 				</section>
 
 				<section className="flex flex-col items-center">
-					<IssueIcon />
+					<Icon name="issue" />
 					<p>{ repository.openIssues }</p>
 				</section>
 			</aside>

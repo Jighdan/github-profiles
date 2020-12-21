@@ -8,7 +8,8 @@ const repositoryFormatter = (repository) => ({
 	language: repository?.language,
 	name: repository?.name,
 	stars: repository?.stargazers_count,
-	openIssues: repository?.open_issues
+	openIssues: repository?.open_issues,
+	website: repository?.homepage
 });
 
 export const constructProfile = (profileData, numberOfProfileRepositories) => ({
