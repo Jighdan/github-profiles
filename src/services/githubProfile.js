@@ -1,22 +1,28 @@
+import { constructProfile, constructRepositories } from "./profileConstructors";
+
 const baseApi = "https://api.github.com/users/";
 
 const fetchProfileData = async (profileName) => {
 	const profileApiUrl = `${baseApi}${profileName}`;
-	const profileRepositoriesApiUrl = `${profileApiUrl}/repos`;
+	const repositoriesApiUrl = `${profileApiUrl}/repos`;
 
 	try {
 		const profileResponse = await fetch(profileApiUrl);
-		const profileRepositoriesResponse = await fetch(profileRepositoriesApiUrl);
+		const repositoriesResponse = await fetch(repositoriesApiUrl);
 
 		const profileData = await profileResponse.json();
-		const profileRepositoriesData = await profileRepositoriesResponse.json();
+		const repositoriesData = await repositoriesResponse.json();
 
-		// Handling not found profiles
+		// Handling not found GitHub profiles
 		if (profileData.message) {
 			return false;
 		}
 
-		return { profileData, profileRepositoriesData };
+		// Constructing the data
+		const repositories = constructRepositories(repositoriesData);
+		const profile = constructProfile(profileData, repositories.length);
+
+		return { profile, repositories };
 	} catch (error) {
 		return null;
 	}

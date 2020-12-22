@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import fetchProfileData from "./services/githubProfile";
+
 import SearchBar from "./components/SearchBar";
-import Profile from "./components/Profile/Profile";
+import Profile from "./components/Profile/index";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Alert from "./components/Alert";
 
 const App = () => {
-  // Remove default state on production
   const [query, setQuery] = useState("");
   const [isProfileLoading, setIsProfileLoading] = useState(false);
-	const [profile, setProfile] = useState(false);
+  const [profile, setProfile] = useState(false);
+  const [repositories, setRepositories] = useState(false);
   const [errorFetching, setErrorFetching] = useState(false);
   
   useEffect(() => {
@@ -21,7 +22,8 @@ const App = () => {
         if (!data) {
           setErrorFetching(true);
         } else {
-          setProfile(data);
+          setProfile(data?.profile);
+          setRepositories(data?.repositories);
         }
   
         setIsProfileLoading(false);
@@ -41,7 +43,7 @@ const App = () => {
 
       <main className="min-h-full py-3">
 				{
-          isProfileLoading ? <LoadingSpinner /> : <Profile profile={ profile } />
+          isProfileLoading ? <LoadingSpinner /> : <Profile profile={ profile } repositories={ repositories } />
         }
 			</main>
     </section>
