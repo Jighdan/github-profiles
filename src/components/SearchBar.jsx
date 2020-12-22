@@ -25,6 +25,7 @@ const SearchBar = ({ setQuery }) => {
 					spellCheck="false"
 					placeholder="Search User ..."
 					required
+					autoComplete="off"
 				/>
 
 				<input type="submit" className="py-2 px-4 rounded-r-lg" value="Search" />

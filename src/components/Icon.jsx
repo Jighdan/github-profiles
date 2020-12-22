@@ -8,8 +8,6 @@ import { ReactComponent as IconGithub } from "../assets/icons/github.svg";
 import { ReactComponent as IconEmail } from "../assets/icons/email.svg";
 import { ReactComponent as IconTwitter } from "../assets/icons/twitter.svg";
 
-// Can't handle 
-
 const availableIcons = {
 	website: IconWebsite,
 	fork: IconFork,
@@ -22,12 +20,13 @@ const availableIcons = {
 	twitter: IconTwitter
 };
 
-const Icon = ({ name }) => {
+const Icon = ({ name, className }) => {
+	// Has to pass a `className` prop in order to receive Tailwind styles
 	const IconComponent = availableIcons[name];
 	
 	// Handling non-available icons
 	if (IconComponent) {
-		return <IconComponent />
+		return <IconComponent className={ className } />
 	}
 	
 	return null;
