@@ -12,7 +12,7 @@ const ProfileCardLinks = ({ email, twitter, githubUrl, website }) => {
 		<nav className="flex justify-center wrap">
 			{
 				Object.keys(links).map(link => (
-					link && (
+					links.link && (
 						<a
 							key={ link }
 							className="space-x-2"
