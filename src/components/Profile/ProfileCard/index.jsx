@@ -1,48 +1,48 @@
+import { websiteUrlFormat, emailUrlFormat, twitterUrlFormat } from "../../../services/urlFormatter";
+import ProfileCardBody from "./ProfileCardBody";
 import ProfileCardLinks from "./ProfileCardLinks";
 
 const ProfileCard = ({ profile }) => {
 	const profileImageAltText = `${profile.login}'s profile.`;
-	const profileBio = profile.bio ? `"${profile.bio}"` : "";
+
+	const profileIntro = {
+		login: profile.login,
+		name: profile.name,
+		bio: profile.bio ? `"${profile.bio}"` : "",
+	};
+	const profileLinks = {
+		github: profile.githubUrl,
+		website: profile.website ? websiteUrlFormat(profile.website) : null,
+		email: profile.email ? emailUrlFormat(profile.email) : null,
+		twitter: profile.twitter ? twitterUrlFormat(profile.twitter) : null,
+	};
+	const profileInfo = {
+		followers: profile.followers,
+		following: profile.following,
+		repositories: profile.repositories
+	};
 
 	return (
-		<article className="p-7 min-w-max flex flex-col flex-grow gap-4 justify-evenly md:gap-4 lg:gap-1 xl:justify-start md:flex-row xl:flex-col items-center xl:items-center">
-			<img className="block w-auto h-56 md:h-64 lg:h-72 rounded-full" src={ profile.avatarUrl } alt={ profileImageAltText } />
-
-			<section className="flex flex-col justify-evenly items-center md:items-start">
-				<header className="">
-					<h1 className="text-4xl lg:text-5xl font-bold">{ profile.login }</h1>
-					<h2 className="text-lg lg:text-xl font-semibold text-grey uppercase">{ profile.name }</h2>
+		<section>
+			<article className="p-7 min-w-max flex flex-col flex-grow gap-4 justify-evenly md:gap-4 lg:gap-1 xl:justify-start md:flex-row xl:flex-col items-center xl:items-center">
+				<header>
+					<img
+						className="block w-auto h-64 md:h-72 lg:h-80 rounded-full"
+						src={profile.avatarUrl}
+						alt={profileImageAltText}
+					/>
 				</header>
 
-				<p className="my-2 lg:my-4 font-light">"{ profileBio }"</p>
+				<ProfileCardBody
+					profileIntro={ profileIntro }
+					profileInfo={ profileInfo }
+				/>
+			</article>
 
-				<aside className="flex flex-row justify-between">
-					<section className="pr-2 flex flex-col items-center font-light tracking-tight">
-						<h3>Followers</h3>
-						<p>{ profile.followers }</p>
-					</section>
-
-					<section className="pr-2 flex flex-col items-center font-light tracking-tight">
-						<h3>Following</h3>
-						<p>{ profile.following }</p>
-					</section>
-
-					<section className="pr-2 flex flex-col items-center font-light tracking-tight">
-						<h3>Repositories</h3>
-						<p>{ profile.repositories }</p>
-					</section>
-				</aside>
-
-				<aside>
-					<ProfileCardLinks
-						email={ profile.email }
-						twitter={ profile.twitter }
-						githubUrl={ profile.githubUrl }
-						website={ profile.website }
-					/>
-				</aside>
-			</section>
-		</article>
+			<footer className="p-7 min-w-max flex justify-center gap-x-16 xl:gap-x-14">
+				<ProfileCardLinks profileLinks={ profileLinks } />
+			</footer>
+		</section>
 	);
 };
 

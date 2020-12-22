@@ -1,19 +1,9 @@
 import { useState } from "react";
+import formatDate from "../../services/dateFormatter";
 import Icon from "../Icon";
 
 const ProfileRepository = ({ repository }) => {
 	const [onHover, setOnHover] = useState(false);
-
-	const formatDate = (date) => {
-		const newDate = new Date(date);
-		const options = {
-			day: "numeric",
-			month: "long",
-			year: "numeric"
-		};
-
-		return newDate.toLocaleString("en-US", options);
-	};
 
 	return (
 		<article

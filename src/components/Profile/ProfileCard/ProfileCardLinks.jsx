@@ -1,32 +1,24 @@
 import Icon from "../../Icon";
 
-const ProfileCardLinks = ({ email, twitter, githubUrl, website }) => {
-	const links = {
-		email: `mailto:${email}`,
-		twitter,
-		github: githubUrl,
-		website,
-	};
-
+const ProfileCardLinks = ({ profileLinks }) => {
 	return (
-		<nav className="flex justify-center wrap">
+		<>
 			{
-				Object.keys(links).map(link => (
-					link && (
+				Object.keys(profileLinks).map(link => (
+					profileLinks[link] && (
 						<a
 							key={ link }
-							className="space-x-2"
-							href={ links[link] }
+							href={ profileLinks[link] }
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<Icon name={ link } />
+							<Icon className="h-10 w-auto lg:h-12 fill-current text-gray-400 hover:text-black" name={ link } />
 						</a>
 						)
 					)
 				)
 			}
-		</nav>
+		</>
 	)
 };
 
